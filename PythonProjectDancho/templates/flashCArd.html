@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Флэш карта</title>
+</head>
+<body>
+<style>
+    .mycards{
+    display:flex;
+    width: 800px;
+    flex-wrap:wrap;
+    }
+    .myQuestion{
+    margin: 10px;
+    font-size:10px;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 2px solid blue;
+    width: 300px;
+    height: 100px;
+    }
+</style>
+    <div class="mycards">
+        <h1>Флэш карта. Ответьте на вопросы</h1>
+    {% for card in cards %}
+        <form method="post">
+            <input name="card_id" value="{{card.id}}">
+            <button type="submit" class="myQuestion">
+                {{card.question}}
+            </button>
+        </form>
+    {% if show_id == card.id %}
+    <p>{{card.answer}}</p>
+    {% endif %}
+
+    {% endfor %}
+    </div>
+</body>
+</html>
